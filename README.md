@@ -1,6 +1,6 @@
 🏆 Jigsaw Rate Severity of Toxic Comments
 ===
-Kaggle☁ Jigsaw Rate Severity of Toxic CommentsRank relative ratings of toxicity between comments!    
+### *Kaggle☁ Jigsaw Rate Severity of Toxic CommentsRank relative ratings of toxicity between comments!😀*    
 악성 댓글의 독성 정도를 측정하여 score를 주는 프로젝트입니다.    
 대회 링크: [https://www.kaggle.com/competitions/jigsaw-toxic-severity-rating/overview/evaluation](https://www.kaggle.com/competitions/jigsaw-toxic-severity-rating/overview/evaluation)    
 
