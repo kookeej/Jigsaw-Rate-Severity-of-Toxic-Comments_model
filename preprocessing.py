@@ -65,7 +65,7 @@ def tokenizing(dataset, args, mode):
     tokenized = tokenizer(
         less_toxic,
         return_tensors='pt',
-        padding=True,
+        padding='max_length',
         truncation=True,
         max_length=args.max_len,
         return_token_type_ids=False
@@ -74,7 +74,7 @@ def tokenizing(dataset, args, mode):
     tokenized2 = tokenizer(
         more_toxic,
         return_tensors='pt',
-        padding=True,
+        padding='max_length',
         truncation=True,
         max_length=args.max_len,
         return_token_type_ids=False
