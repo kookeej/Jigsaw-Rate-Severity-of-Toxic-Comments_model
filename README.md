@@ -11,7 +11,11 @@
 
 ### 💡 왜 Metric learning을 사용하였는가?
 * 이 대회는 별도의 metric 없이, annotator들이 매긴 랭킹을 평균 낸 값이 기준이 됩니다.
-* 따라서 metric learning을 통해 독성이 더 높은 댓글이 더 높은 랭킹을 갖도록 학습시키고, 이를 통해 입력 댓글들의 임베딩이 학습되도록 모델을 설계하는 것이 더 적절하기 때문에 metric learning을 사용하게 되었습니다.
+* 따라서 metric learning을 통해 독성이 더 높은 댓글이 더 높은 랭킹을 갖도록 학습시키고, 이를 통해 입력 댓글들의 임베딩이 학습되도록 모델을 설계하는 것이 더 적절하기 때문에 metric learning을 사용하게 되었습니다. 
+
+### Margin Ranking Loss
+* 하지만 좋은 positive/negative pair를 찾아야 하기 때문에, 데이터셋에 민감하게 반응한다.
+* 실제로 여러 데이터셋 조합을 고려하여 실험을 진행하였다.
 
 # 1. Preprocessing
 * Kaggle Competition Code에 올라온 [베이스라인 코드](https://www.kaggle.com/code/debarshichanda/pytorch-w-b-jigsaw-starter)의 데이터 전처리 방식을 참고했습니다.
