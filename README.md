@@ -31,7 +31,26 @@ Jigsaw Rate Severity of Toxic Comments
 
 ## 2. Model
 * RoBERTa-base의 bi-encoder구조를 가진 모델입니다. 이 두 개의 인코더는 서로 가중치를 공유합니다.
-* less toxic comments와 more toxic comments를 각각의 인코더의 입력값으로 넣은 뒤, 두 출력값의 [CLS] 토큰을 fully-connected layer를 통과시킨 후 metric learning을 진행합니다. 
+* less toxic comments와 more toxic comments를 각각의 인코더의 입력값으로 넣은 뒤, 두 출력값의 [CLS] 토큰을 fully-connected layer를 통과시킨 후 metric learning을 진행합니다.
+```python
+class CustomModel(nn.Module):
+    def __init__(self, config):
+        super(CustomModel, self).__init__()
+        # 모델 로딩
+        self.model = AutoModel.from_pretrained(cfg.MODEL_NAME, config=cfg.MODEL_CONFIG)
+        # Fully-connected layer
+        self.sequential = nn.Sequential(
+            nn.Dropout(0.2),
+            nn.Linear(768, 1)
+        )
+        
+    def forward(self, ids, mask):
+        outputs = self.model(input_ids=ids, attention_mask=mask,
+                        output_hidden_states=False)
+        # CLS 토큰을 fully-connected layer에 통과시킨다.
+        outputs = self.sequential(outputs[1])
+        return outputs
+```
 
 ---
 
